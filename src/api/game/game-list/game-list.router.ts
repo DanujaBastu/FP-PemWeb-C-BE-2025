@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable import/no-default-export */
 import { Router } from 'express';
 
+import { router as OpenTheBoxRouter } from './open-the-box/router';
 import { QuizController } from './quiz/quiz.controller';
 
-const GameListRouter = Router();
+const gameListRouter = Router();
 
-GameListRouter.use('/quiz', QuizController);
+gameListRouter.use('/quiz', QuizController);
+gameListRouter.use('/open-the-box', OpenTheBoxRouter);
 
-export default GameListRouter;
+export { gameListRouter };
