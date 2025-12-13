@@ -7,7 +7,6 @@ export interface IOpenTheBoxItem {
   isLocked?: boolean;
 }
 
-// Interface Utama
 export interface IOpenTheBoxGameData {
   items: IOpenTheBoxItem[];
   settings: {
