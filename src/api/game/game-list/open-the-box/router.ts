@@ -7,7 +7,6 @@ import { createOpenTheBoxSchema } from './schema';
 
 const openTheBoxRouter = Router();
 
-// POST: Create Game
 openTheBoxRouter.post(
   '/',
   validateAuth({}),
@@ -15,7 +14,6 @@ openTheBoxRouter.post(
   createOpenTheBox,
 );
 
-// GET: Get Game Detail
 openTheBoxRouter.get(
   '/:id',
   validateAuth({ optional: true }),

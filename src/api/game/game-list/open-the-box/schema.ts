@@ -30,3 +30,8 @@ export const createOpenTheBoxSchema = z.object({
 
 // Ubah nama type agar sesuai aturan linter (harus berakhiran Props)
 export type CreateOpenTheBoxProps = z.infer<typeof createOpenTheBoxSchema>;
+
+// Type for gameData specifically
+export type OpenTheBoxGameProps = z.infer<
+  typeof createOpenTheBoxSchema
+>['gameData'];
