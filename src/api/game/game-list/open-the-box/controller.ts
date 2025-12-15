@@ -187,18 +187,16 @@ export const updateOpenTheBox = async (
     }
 
     if (validatedData.is_publish !== undefined) {
-      const isPublishValue = validatedData.is_publish;
-      updateFields.is_published =
-        isPublishValue === 'true' ||
-        isPublishValue === true ||
-        isPublishValue === '1';
+      const rawValue = String(validatedData.is_publish).toLowerCase();
+      const isPublished =
+        rawValue !== 'false' &&
+        rawValue !== '0' &&
+        validatedData.is_publish !== false;
 
-      console.log(
-        'Setting is_published to:',
-        updateFields.is_published,
-        'from input:',
-        isPublishValue,
-      );
+      updateFields.is_published = isPublished;
+      console.log('== DEBUG PUBLISH STATUS ==');
+      console.log('Raw value:', validatedData.is_publish);
+      console.log('Parsed is_published:', isPublished);
     }
 
     console.log('Update fields:', updateFields);
@@ -251,6 +249,11 @@ export const getOpenTheBoxDetail = async (
     });
 
     if (!game) {
+      throw new ErrorResponse(StatusCodes.NOT_FOUND, 'Game not found');
+    }
+
+    if (!game.is_published) {
+      // sengaja 404 supaya link unpublished terlihat "tidak ada"
       throw new ErrorResponse(StatusCodes.NOT_FOUND, 'Game not found');
     }
 

@@ -3,6 +3,7 @@ import { Router } from 'express';
 import { AnagramController } from './anagram/anagram.controller';
 import { CrosswordController } from './crossword/crossword.controller';
 import { MazeChaseController } from './maze-chase/maze-chase.controller';
+import { router as OpenTheBoxRouter } from './open-the-box/router';
 import { PairOrNoPairController } from './pair-or-no-pair/pair-or-no-pair.controller';
 import { QuizController } from './quiz/quiz.controller';
 import { SlidingPuzzleController } from './sliding-puzzle/sliding-puzzle.controller';
@@ -23,5 +24,6 @@ gameListRouter.use('/pair-or-no-pair', PairOrNoPairController);
 gameListRouter.use('/type-speed', TypeSpeedController);
 gameListRouter.use('/spin-the-wheel', SpinTheWheelController);
 gameListRouter.use('/true-or-false', TrueOrFalseController);
+gameListRouter.use('/open-the-box', OpenTheBoxRouter);
 
 export { gameListRouter };
