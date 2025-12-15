@@ -253,7 +253,6 @@ export const getOpenTheBoxDetail = async (
     }
 
     if (!game.is_published) {
-      // sengaja 404 supaya link unpublished terlihat "tidak ada"
       throw new ErrorResponse(StatusCodes.NOT_FOUND, 'Game not found');
     }
 
